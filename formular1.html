@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anmeldung</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+                function loadData(){
+    const anrede = sessionStorage.getItem("anrede") || "";
+    const vname = sessionStorage.getItem("vname") || "";
+    const nname = sessionStorage.getItem("nname") || "";
+    const geb = sessionStorage.getItem("geb") || "";
+    const mail = sessionStorage.getItem("mail") || "";
+
+    
+
+    document.getElementById("anrede").value = anrede;
+    document.getElementById("vname").value = vname;
+    document.getElementById("nname").value = nname;
+    document.getElementById("geb").value = geb;
+    document.getElementById("mail").value = mail;
+    
+            
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData, false);
+    </script>
+</head>
+<body>
+    <section class="container">
+    <!--Main Kontakformular und jede einzelne Zeile ist ein div-->
+    <div class="error-container"></div>
+    <main>
+        
+        <!--Auswahl Herr / Frau gegoogelt-->
+        <form action="form_processing.php" method="post" id="kontakt" class="was-validated">
+            <label for="anrede">Anrede:</label>
+    <p id="error-message" class="text-danger" style="color: #dc3545; display: none;">Bitte füllen Sie alle Felder aus.</p>
+
+            <select name="Anrede" id="anrede" class="form-select">
+        <option value="Herr" selected="<?php echo isset($_POST['Anrede']) && $_POST['Anrede'] === 'Herr' ? 'selected' : ''; ?>">Herr</option>
+        <option value="Frau" selected="<?php echo isset($_POST['Anrede']) && $_POST['Anrede'] === 'Frau' ? 'selected' : ''; ?>">Frau</option>
+    </select>
+        
+            <label for="vname">Vorname: </label>
+            <input type="text" id="vname" name="vname" required class="form-control" placeholder="Vorname">
+       
+            <label for="nname">Nachname:</label>
+            <input type="text" id="nname" name="nname" required class="form-control" placeholder="Nachname">
+        
+            <label for="geb">Geburtsdatum:</label>
+            <input type="date" id="geb" name="geb" class= "form-control" required>
+
+            <label for="mail">E-Mail:</label>
+            <input type="text" id="mail" name="mail" required placeholder="E-Mail">
+        
+            
+        </form>
+</main>
+
+<footer>
+    <div id="btn1">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" id="weiter" type="button" onclick="weiterClicked()">weiter</button>
+            <button class="btn btn-primary" id="zurück" type="button" onclick="zurückClicked()">zurück</button>
+
+        </div>
+    </div>
+</footer>
+</section>
+<script src="kurs.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>  
+
+</body>
+</html>

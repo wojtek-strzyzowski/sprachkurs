@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function loadData(){
+            const strasse = sessionStorage.getItem("strasse") || "";
+            const plz = sessionStorage.getItem("plz") || "";
+            const ort = sessionStorage.getItem("ort") || "";
+            const tel = sessionStorage.getItem("tel") || "";
+            const news = sessionStorage.getItem("news") || "";
+        
+
+            document.getElementById("strasse").value = strasse;
+            document.getElementById("plz").value = plz;
+            document.getElementById("ort").value = ort;
+            document.getElementById("tel").value = tel;        
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData, false);
+    </script>
+</head>
+<body>
+    <section class="container">
+    <main>
+        
+        <p id="error-message" style="color: #dc3545; display: none;">Bitte füllen Sie alle Felder aus.</p>
+        <!--Kontakformular mit Adresse-->
+           
+        <form action="form_processing.php" method="post" id="kontakt" class="was-validated"> 
+            
+            <label for="strasse">Strasse: </label>
+            <input type="text" id="strasse" name="strasse" required class= "form-control" placeholder="Strasse+Hausnummer">
+      
+            <!--muss unbedingt mit Datenbank plz schweiz evtl. google abgleichen-->
+            <label for="plz">PLZ:</label>
+            <input type="text" id="plz" name="plz" required class= "form-control" placeholder="PLZ">
+        
+            <label for="ort">Ort:</label>
+            <input type="text" id="ort" name="ort" required class= "form-control" placeholder="Ort">
+       
+            <!--Handy Nr abfrage noch googln-->
+            <label for="tel">Tel:</label>
+            <input type="number" id="tel" name="tel" required class= "form-control" placeholder="Tel-Nr.:">
+
+            <div class="AGB">
+                <label class="form-check-label" for="agb"><a href="bilder/AGB.pdf" target="_blank">AGB:</a> </label>
+                <input class="form-check-input" type="checkbox" id="agb" name="agb" required class= "form-control">
+                <p>I accept the terms and conditions</p>
+            </div>
+
+            <!--Newsletter bestellen mit Radio Btn von bootstrap-->
+            <h1>Newsletter</h1>
+            <p>Monatliche Informationen über neue Sprachkurse und Sprachreisen.</p>
+    
+            <div class="container">
+            <form action="https://web.inxmail.com/[Mandantenname]/subscription/servletv2" method="post" id="displayform">
+                        <input type="hidden" name="INXMAIL_SUBSCRIPTION" value="[Listenname]"/>
+                        <input type="hidden" name="INXMAIL_HTTP_REDIRECT" value="[URL für Landeseite "Erfolg"]"/>
+                        <input type="hidden" name="INXMAIL_HTTP_REDIRECT_ERROR" value="[URL für Landeseite "Fehler"]"/>
+                        <input type="hidden" name="INXMAIL_CHARSET" value="UTF-8"/>
+
+                    <label>
+                        <input type="checkbox" name="INXMAIL_TRACKINGPERMISSION">
+                            Ja, ich möchte den Newsletter abonnieren.<br>
+                       </label>
+                </form>
+        </div>
+            
+            <label for="nachricht">Nachricht</label>
+            <div class="nachricht">Nachricht;<br>
+                <textarea name="nachricht" id="nachricht"></textarea>
+            </div>
+            </form> 
+    </main>
+    
+    <footer>
+        <div id="btn2">
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="weiter" type="button" onclick="weiter1Clicked()">Anmelden</button>
+                <button class="btn btn-primary" id="zurück" type="button" onclick="zurück1Clicked()">zurück</button>
+    
+            </div>
+        </div>
+    </footer>
+    </section>
+
+    
+    
+    <script src="kurs.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>  
+       
+</body>
+</html>
