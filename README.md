@@ -1,6 +1,7 @@
 Es handelt sich hierbei um ein Kontaktformular für eine Sprachschule.
 
 Ich habe mich recht na an Figma gehalten (vom Aufbau her).
+Link:https://www.figma.com/file/54BMgjQ5PR0shab8Vmg5o6/Anmeldeformular?type=design&node-id=0%3A1&mode=design&t=6kn3omNewEwbwOQf-1
 
 Die Container Form hab ich von Bootstrap genommen, eben so auch die Validierung (form-control).
 
